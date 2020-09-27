@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Apprenticeship | Make a Difference</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#2F2F2F" />
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@1,300&display=swap" rel="stylesheet">
+  <link href="styles/common.css" rel="stylesheet" />
+  <link href="styles/join.css" rel="stylesheet" />
+  <meta charset="UTF-8" />
+</head>
+
+<body>
+  <header>
+    <div class="wrap">
+      <a class="logo" href="/">MAD</a>
+      <div class="inner">Apply Now!</div>
+      <button class="menu">Menu</button>
+    </div>
+    <nav>
+      <ul>
+        <li>
+          <a href="/">Apprenticeship 2020</a>
+        </li>
+        <li>
+          <a href="apprenticeship.html">Program Details</a>
+        </li>
+        <li>
+          <a href="learn.html">Learn More</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="loading">Loading...</div>
+
+  <div id="app" style="visibility: hidden">
+
+
+    <!-- ######################################### Panel start ######################################### -->
+    <section class="panel-join">
+      <article>
+        <div class="inner">
+
+          <div class="icon cube spin"><span /></div>
+
+          <div class="grid-wrap">
+            <div class="headings">
+              <h3>The MAD Apprenticeship Program is ready for you. </h3>
+              <h1>
+                <span class="paper-cut">Are you</span>
+                <span class="paper-cut"> <strong>MAD</strong></span>
+                <span class="paper-cut"><strong>enough?</strong></span>
+              </h1>
+            </div>
+          </div>
+
+          <div id="form-area" class="grid-wrap">
+            <form action="system/join.php" method="post" id="form">
+              <input type="hidden" name="campaign" value="" id="campaign">
+              <div class="row" id="form-area">
+                <div class="col-md-6">
+                  <label for="name" class="dot">Name:</label>
+                  <input type="text" class="form-control" id="name" name="name" value="" required="">
+
+                  <label for="email" class="dot">Email:</label>
+                  <input type="email" class="form-control" id="email" name="email" value="" required="">
+
+                  <label for="city_id" class="dot">
+                    <select class="dot" id="city_id" name="city_id" required="">
+                      <option value="">City</option>
+                      <option value="24">Ahmedabad</option>
+                      <option value="1">Bangalore</option>
+                      <option value="21">Bhopal</option>
+                      <option value="13">Chandigarh</option>
+                      <option value="6">Chennai</option>
+                      <option value="10">Cochin</option>
+                      <option value="16">Coimbatore</option>
+                      <option value="25">Dehradun</option>
+                      <option value="12">Delhi</option>
+                      <option value="23">Guntur</option>
+                      <option value="19">Gwalior</option>
+                      <option value="11">Hyderabad</option>
+                      <option value="20">Lucknow</option>
+                      <option value="2">Mangalore</option>
+                      <option value="4">Mumbai</option>
+                      <option value="22">Mysore</option>
+                      <option value="15">Nagpur</option>
+                      <option value="5">Pune</option>
+                      <option value="3">Trivandrum</option>
+                      <option value="8">Vellore</option>
+                      <option value="18">Vijayawada</option>
+                      <option value="17">Vizag</option>
+                    </select>
+                  </label>
+
+                  <label for="source" class="dot">
+                    <select class="" id="source" name="source" required="">
+                      <option value="">How did you know about MAD?</option>
+                      <option value="friends">Friends</option>
+                      <option value="college">College Presentation</option>
+                      <option value="media">Media</option>
+                      <option value="internet">Social Media</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </label>
+
+                  <label for="profile" class="dot">
+                    <select class="" id="profile" name="profile" required>
+                      <option value="">Choose volunteering profile</option>
+                      <option value="teaching">Teaching Volunteer</option>
+                      <option value="wingman">Wingman (Youth Mentoring)</option>
+                      <option value="fundraising">Fundraising Volunteer</option>
+                      <option value="hc">Human Capital Volunteer</option>
+                      <option value="campaigns">Campaigns Volunteer</option>
+                      <option value="finance">Finance Volunteer</option>
+                    </select>
+                  </label>
+                </div>
+                <div class="col-md-6">
+
+                  <label for="sex" class="dot">
+                    <select class="" id="sex" name="sex" required="">
+                      <option value="">Gender</option>
+                      <option value="m">Male</option>
+                      <option value="f">Female</option>
+                      <option value="o">Other</option>
+                    </select>
+                  </label>
+
+
+                  <label for="phone" class="dot">Phone</label>
+                  <input type="tel" id="phone" name="phone" value="" required="" pattern="[\+\-0-9 ]{10,14}">
+
+                  <label for="job_status" class="dot">
+                    <select class="" id="job_status" name="job_status" required="">
+                      <option value="">Occupation</option>
+                      <option value="high school">High School</option>
+                      <option value="college">College</option>
+                      <option value="working">Working</option>
+                      <option value="self-employed">Self-Employed</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </label>
+
+                  <label for="why_mad" class="dot">why MAD?</label>
+                  <textarea class="form-control" id="why_mad" name="why_mad" rows="5" cols="40" required=""></textarea>
+                </div>
+              </div>
+
+              <div class="applynow">
+                <button type="submit"> Apply Now!</button>
+              </div>
+            </form>
+
+            <div id="loading" class="overlay">
+              <div class="icon laptop stop-motion2"><span /></div>
+              <h3>Submitting...</h3>
+            </div>
+
+          </div>
+
+          <div class="grid-wrap" id="response-area">
+            <div id="result">
+            </div>
+          </div>
+
+        </div>
+      </article>
+    </section>
+
+
+    <footer>
+      <div class="wrap">
+        <span>&copy; Make a Difference India, 2020.</span>
+        <span>Designed by THIS</span>
+      </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>
+    <script type="module" src="scripts/common.js"></script>
+    <script type="module" src="scripts/join.js" defer></script>
+</body>
+
+</html>
