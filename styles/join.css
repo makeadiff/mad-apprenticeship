@@ -133,7 +133,7 @@
   right: 0;
   bottom: 0;
   width: 100%;
-  background: var(--color-light) url("../../assets/mad-texture1.png");
+  background: var(--color-light) url("../assets/mad-texture1.png");
   padding: 10rem var(--spacing-1);
   text-align: center;
 }

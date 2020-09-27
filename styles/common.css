@@ -63,7 +63,7 @@ html {
   color: var(--color-dark);
   width: 100vw;
   overflow-x: hidden;
-  background: url("../../assets/mad-texture1.png");
+  background: url("../assets/mad-texture1.png");
   background-size: 150px;
   scroll-behavior: smooth;
   overscroll-behavior: none;
@@ -606,7 +606,7 @@ ul.content li:before {
   display: block;
   height: 8rem;
   width: 8rem;
-  background: url(../../assets/apply-now.png) no-repeat center;
+  background: url("../assets/apply-now.png") no-repeat center;
   background-size: 100%;
   border: none;
   text-indent: -9999px;
@@ -1109,7 +1109,7 @@ footer .wrap {
 
 .heading-texture1,
 .heading-texture2 {
-  background: url("../../assets/ink6.jpg");
+  background: url("../assets/ink6.jpg");
   background-size: 200px;
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
@@ -1211,7 +1211,7 @@ header .logo {
   display: block;
   width: 6rem;
   height: 3rem;
-  background: url("../../assets/mad-logo-white-text.png") no-repeat;
+  background: url("../assets/mad-logo-white-text.png") no-repeat;
   background-size: contain;
   text-indent: -9999px;
 }
@@ -1222,7 +1222,7 @@ header .menu {
   height: 3rem;
   background: none;
   text-indent: -9999px;
-  background: url("../../assets/hamburger.svg") no-repeat;
+  background: url("../assets/hamburger.svg") no-repeat;
   background-position: center center;
   outline: none;
   cursor: pointer;
@@ -1231,7 +1231,7 @@ header .menu {
 header nav {
   width: 100vw;
   height: 20rem;
-  background: url("../../assets/header-bg.svg") no-repeat;
+  background: url("../assets/header-bg.svg") no-repeat;
   background-position: bottom center;
   background-size: 100%;
   padding: var(--spacing-1);
