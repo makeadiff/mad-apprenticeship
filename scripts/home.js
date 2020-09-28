@@ -267,7 +267,7 @@ function onReady() {
       trigger: '.you4',
       // scrub: true,
       // toggleActions: 'restart pause reverse pause',
-      start: 'center center',
+      start: 'top 62%',
       id: 'ball-world',
       // markers: true,
     },
