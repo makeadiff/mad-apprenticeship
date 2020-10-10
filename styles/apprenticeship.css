@@ -4,7 +4,7 @@
 }
 
 .panel-about .inner {
-  height: 60rem;
+  height: 65rem;
   position: relative;
 }
 
@@ -47,8 +47,8 @@
 }
 
 .panel-about .pen {
-  left: -6%;
-  top: 30.7rem;
+  left: -2rem;
+  top: 38rem;
   -webkit-transform: rotate(57deg);
           transform: rotate(57deg);
 }
