@@ -42,6 +42,7 @@
 
 .panel-areyoumad h1 {
   margin-bottom: 0;
+  font-size: 2.6rem;
 }
 
 .panel-areyoumad h1 div {
@@ -56,7 +57,7 @@
   -webkit-transform: rotate(-2deg);
           transform: rotate(-2deg);
   left: 18%;
-  top: 0.8rem;
+  top: 0rem;
 }
 
 .panel-areyoumad h1 .line2 {
@@ -68,7 +69,7 @@
 .panel-areyoumad h1 .line3 {
   -webkit-transform: rotate(-1deg);
           transform: rotate(-1deg);
-  top: 7.2rem;
+  top: 8rem;
   text-indent: -0.3rem;
   -webkit-animation-delay: 0.4s;
           animation-delay: 0.4s;
@@ -78,18 +79,18 @@
   -webkit-transform: rotate(-4deg);
           transform: rotate(-4deg);
   position: absolute;
-  top: 10.4rem;
+  top: 12rem;
   -webkit-animation-delay: 0.7s;
           animation-delay: 0.7s;
 }
 
-.panel-areyoumad .boy {
+.panel-areyoumad .gal {
   margin-left: var(--spacing-left);
   margin-top: 14rem;
-  -webkit-transform: scale(0.5);
-          transform: scale(0.5);
-  -webkit-transform-origin: top left;
-          transform-origin: top left;
+  background: url("../assets/madgal.png") no-repeat bottom;
+  background-size: contain;
+  width: 9rem;
+  height: 13rem;
 }
 
 .panel-areyoumad .fist1,
@@ -501,6 +502,7 @@
 
 .panel-lifechange .text-center h3 {
   font-size: var(--font-size-l);
+  line-height: 0.7;
 }
 
 .panel-lifechange .text-center .line1 {

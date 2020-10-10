@@ -12,12 +12,15 @@
   }
 
   h2 {
-    margin-bottom: 6rem;
+    margin-bottom: 12rem;
   }
 
-  .ball {
-    left: -6%;
-    top: 1%;
+  .boy {
+    transform: scale(0.6);
+    transform-origin: top left;
+    position: absolute;
+    right: 1.8rem;
+    top: 1.6rem;
   }
 
   .fist {
@@ -26,8 +29,8 @@
   }
 
   .laptop {
-    left: 28rem;
-    top: 2rem;
+    left: 5rem;
+    top: 4rem;
     span {
       transform: scaleX(-1) rotate(-15deg);
     }
@@ -42,6 +45,10 @@
     left: -6%;
     top: 30.7rem;
     transform: rotate(57deg);
+  }
+
+  .two-col-v2 {
+    margin-top: 3rem;
   }
 
   .book1 {

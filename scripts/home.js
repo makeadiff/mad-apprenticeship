@@ -74,7 +74,7 @@ function onReady() {
     })
     .set('.panel-areyoumad .fist', {
       opacity: 1,
-    }).from('.panel-areyoumad .boy, .panel-areyoumad .ball0, .panel-areyoumad .arrow-r-b, .panel-areyoumad .phone', {
+    }).from('.panel-areyoumad .gal, .panel-areyoumad .ball0, .panel-areyoumad .arrow-r-b, .panel-areyoumad .phone', {
       duration: 0.4,
       opacity: 0,
     })

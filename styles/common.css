@@ -250,7 +250,7 @@ ul.content li:before {
 
 .paper-cut {
   display: inline-block;
-  line-height: 1;
+  line-height: 1.2;
   padding: 0.5rem 0.2rem 0.2rem 0.2rem;
   margin-bottom: 0;
   overflow: hidden;
@@ -1233,7 +1233,7 @@ header nav {
   height: 20rem;
   background: url("../assets/header-bg.svg") no-repeat;
   background-position: bottom center;
-  background-size: 100%;
+  background-size: 110%;
   padding: var(--spacing-1);
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1245,9 +1245,19 @@ header nav {
       -ms-flex-pack: center;
           justify-content: center;
   position: absolute;
-  top: -13rem;
-  -webkit-transition: top cubic-bezier(0.38, 0.79, 0.61, 1.18) 300ms;
-  transition: top cubic-bezier(0.38, 0.79, 0.61, 1.18) 300ms;
+  top: -12rem;
+  -webkit-transition: all ease-out 500ms;
+  transition: all ease-out 500ms;
+}
+
+header nav ul {
+  -webkit-transform: scaleY(0.1);
+          transform: scaleY(0.1);
+  -webkit-transform-origin: top center;
+          transform-origin: top center;
+  opacity: 0.7;
+  -webkit-transition: all ease-out 800ms;
+  transition: all ease-out 800ms;
 }
 
 header nav li {
@@ -1268,6 +1278,13 @@ header nav a.current {
 
 header.expanded nav {
   top: 2rem;
+  background-size: 180%;
+}
+
+header.expanded nav ul {
+  opacity: 1;
+  -webkit-transform: scaleY(1.01);
+          transform: scaleY(1.01);
 }
 
 .two-col-v1,

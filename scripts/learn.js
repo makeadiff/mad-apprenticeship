@@ -143,7 +143,7 @@ function onReady() {
         id: 'theprogram',
       }
     })
-    .from('.bottom h3', {
+    .from('.panel-theprogram .bottom h3, .panel-theprogram .links h2', {
       ease: 'sine.out',
       y: '8rem',
       opacity: 0,

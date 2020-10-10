@@ -4,7 +4,7 @@
 }
 
 .panel-about-problem .inner {
-  height: 40rem;
+  height: 51rem;
   position: relative;
   margin-top: 6rem;
 }
@@ -286,10 +286,11 @@
 }
 
 .panel-theprogram .book1 {
-  top: 73.6rem;
-  left: 24rem;
-  -webkit-transform: rotate(32deg);
-          transform: rotate(32deg);
+  z-index: 2;
+  top: 59.6rem;
+  left: 30rem;
+  -webkit-transform: rotate(13deg) scale(1.2);
+          transform: rotate(13deg) scale(1.2);
 }
 
 .panel-theprogram .two-col-v1 {
@@ -302,9 +303,26 @@
 }
 
 .panel-theprogram .bottom {
-  margin-right: 4.2rem;
-  margin-left: 3rem;
   margin-bottom: 5rem;
+}
+
+.panel-theprogram .bottom h3 {
+  padding-right: 4.2rem;
+  padding-left: 3rem;
+}
+
+.panel-theprogram .bottom h3:last-child {
+  background-color: var(--color-yellow);
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.panel-theprogram .ball0 {
+  -webkit-transform: scale(2.5);
+          transform: scale(2.5);
+  top: 66rem;
+  left: 31rem;
+  z-index: 1;
 }
 
 .panel-theprogram .links {
@@ -323,29 +341,5 @@
   width: 2em;
   position: absolute;
   left: 0;
-}
-
-.panel-theprogram .links h2:last-child::after {
-  width: 2em;
-  -webkit-transform: scaleX(-1) translateX(-0.5em);
-          transform: scaleX(-1) translateX(-0.5em);
-  padding-left: 0.5em;
-}
-
-/* -------------------------------- PANEL ----------------------------- */
-.panel-learnmore .inner {
-  height: 20rem;
-  margin-top: 8rem;
-  position: relative;
-}
-
-.panel-learnmore .ball0 {
-  -webkit-transform: scale(2);
-          transform: scale(2);
-  top: -3rem;
-}
-
-.panel-learnmore .two-col-v2 div h3 {
-  text-align: left;
 }
 /*# sourceMappingURL=learn.css.map */
