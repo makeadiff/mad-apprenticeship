@@ -30,9 +30,9 @@ function submitForm(e) {
   const formDataJson = JSON.stringify(Object.fromEntries(formData));
   console.log(formDataJson);
 
-  const API = 'https://mad2020.free.beeceptor.com/success'; // success case
+  // const API = 'https://mad2020.free.beeceptor.com/success'; // success case
   // const API = 'https://mad2020.free.beeceptor.com/fail'; // fail case
-  // const API =  e.target.action; // production
+  const API =  e.target.action; // production
 
   fetch(API, {
     method: 'POST',

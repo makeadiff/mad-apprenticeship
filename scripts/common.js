@@ -26,6 +26,26 @@ export const common = {
       }
     })
 
+    // IF there is a campain id, recreate all links with that ID
+    let campaign_id = "";
+    let loc = document.location.href;
+
+    if(loc.match(/\?c=/)) {
+      campaign_id = loc.replace(/.+\?c=([a-zA-Z0-9]+).*$/, "$1");
+    }
+    if(campaign_id) {
+      const anchors = document.getElementsByTagName("a");
+      for(let i=0; i<anchors.length; i++) {
+        anchors[i].href = anchors[i].href + "?c="+campaign_id;
+      }
+
+      fetch("../system/zoho.php", {
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({"campaign": campaign_id}),
+        method: "POST"
+      }).then(response => response.json()).then(data => console.log(data));
+    }
+
   },
 
   showHeaderAndButton() {
