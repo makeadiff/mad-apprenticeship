@@ -39,7 +39,11 @@
   }
 }
 
-
+@media only screen and (min-width: 1024px) {
+  .headings {
+    width: 36rem;
+  }
+}
 
 /* -------------------------------- PANEL skills----------------------------- */
 
@@ -51,7 +55,6 @@
 
   .headings {
     h2 {
-
       margin-right: 0;
       margin-top: 1rem;
       margin-bottom: 4rem;;
@@ -63,6 +66,7 @@
     margin: 3rem 0;
     width: 90%;
     position: relative;
+
     .mask {
       width: 0%;
       overflow: hidden;
@@ -122,8 +126,8 @@
   .scrub {
     left: 25rem;
     top: 50rem;
-    transform: scale(0.8)
-;    span {
+    transform: scale(0.8);    
+    span {
       animation: scrubbing 1s ease-out infinite;
     }
   }
@@ -132,10 +136,29 @@
     left: 26rem;
     top: 66rem;
   }
-
-
 }
 
+@media only screen and (min-width: 1024px) {
+  .arrow-down-long {
+    left: 48rem !important;
+  }
+  .sewing-machine {
+    top: 35rem !important;
+  }
+  .wrench {
+    top: 34rem !important;
+  }
+  .scrub {
+    top: 40rem !important;
+  }
+  .panel-whoarethey .inner {
+    height: 55rem !important;
+  }
+  .panel-whoarethey .cube {
+    top: 56rem !important;
+  }
+
+}
 
 /* -------------------------------- PANEL course----------------------------- */
 .panel-thetruth  {
@@ -255,6 +278,11 @@
 
 }
 
+@media only screen and (min-width: 1024px) {
+  .panel-thetruth .inner {
+    height: 55rem !important;
+  }
+}
 
 /* -------------------------------- PANEL ----------------------------- */
 
@@ -327,5 +355,18 @@
       }
     }
   }
+}
 
+@media only screen and (min-width: 1024px) {
+  .panel-theprogram .ball0 {
+    top: 52rem !important;
+    left: 44rem !important;
+  }
+  .panel-theprogram .book1 {
+    top: 50rem !important;
+    left: 40rem !important;
+  }
+  .panel-theprogram .inner {
+    height: 70rem !important;
+  }
 }
