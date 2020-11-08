@@ -39,7 +39,7 @@ export const common = {
         anchors[i].href = anchors[i].href + "?c="+campaign_id;
       }
 
-      fetch("../system/zoho.php", {
+      fetch("system/zoho.php", {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({"campaign": campaign_id}),
         method: "POST"
