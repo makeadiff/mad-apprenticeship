@@ -1,3 +1,7 @@
+#volunteering_experience_details, .student-section, .working-section {
+  display: none;
+}
+
 /* -------------------------------- PANEL About----------------------------- */
 .panel-join {
   padding-top: var(--header-reserve);
@@ -137,4 +141,3 @@
   padding: 10rem var(--spacing-1);
   text-align: center;
 }
-/*# sourceMappingURL=join.css.map */

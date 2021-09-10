@@ -43,6 +43,26 @@ function submitForm(e) {
     .then(data => handleResponse(data));
 };
 
+function setJobStatus(e) {
+  var status = e.target.value;
+  if(status == "working") {
+    document.querySelector(".working-section").style.display = 'block';
+    document.querySelector(".student-section").style.display = 'none';
+  } else if(status == "student") {
+    document.querySelector(".student-section").style.display = 'block';
+    document.querySelector(".working-section").style.display = 'none';
+  }
+} 
+
+function setVolExp(e) {
+  var status = e.target.value;
+  if(status == "yes") {
+    document.querySelector("#volunteering_experience_details").style.display = 'block';
+  } else {
+    document.querySelector("#volunteering_experience_details").style.display = 'none';
+  }
+} 
+
 /* Show page when ready */
 function onReady() {
   var campaign_id = "";
@@ -53,6 +73,9 @@ function onReady() {
   if (campaign_id) {
     document.querySelector("#campaign").value = campaign_id;
   }
+
+  document.querySelector("#job_status").addEventListener('change', setJobStatus);
+  document.querySelector("#volunteering_experience").addEventListener('change', setVolExp);
 
   document.getElementById('form').addEventListener('submit', submitForm);
   common.init();

@@ -62,10 +62,25 @@
               <div class="row" id="form-area">
                 <div class="col-md-6">
                   <label for="name" class="dot">Name:</label>
-                  <input type="text" class="form-control" id="name" name="name" value="" required="">
+                  <input type="text" id="name" name="name" value="" required="">
 
                   <label for="email" class="dot">Email:</label>
-                  <input type="email" class="form-control" id="email" name="email" value="" required="">
+                  <input type="email" id="email" name="email" value="" required="">
+
+                  <label for="phone" class="dot">Phone:</label>
+                  <input type="tel" id="phone" name="phone" value="" required="" pattern="[\+\-0-9 ]{10,14}">
+
+                  <label for="sex" class="dot">
+                    <select class="" id="sex" name="sex" required="">
+                      <option value="">Gender</option>
+                      <option value="m">Male</option>
+                      <option value="f">Female</option>
+                      <option value="o">Other</option>
+                      <option value="non-binary">Non-Binary</option>
+                      <option value="not-given">Prefer not to say</option>
+                    </select>
+                  </label>
+
 
                   <label for="city_id" class="dot">
                     <select class="dot" id="city_id" name="city_id" required="">
@@ -106,9 +121,9 @@
                     </select>
                   </label>
 
-<!--                   <label for="profile" class="dot">
-                    <select class="" id="profile" name="profile" required>
-                      <option value="">Choose volunteering profile</option>
+                  <label for="applied_role" class="dot">
+                    <select class="" id="applied_role" name="applied_role" required>
+                      <option value="">Choose first preference for role</option>
                       <option value="teaching">Teaching Volunteer</option>
                       <option value="wingman">Wingman (Youth Mentoring)</option>
                       <option value="fundraising">Fundraising Volunteer</option>
@@ -116,36 +131,73 @@
                       <option value="campaigns">Campaigns Volunteer</option>
                       <option value="finance">Finance Volunteer</option>
                     </select>
-                  </label> -->
-                </div>
-                <div class="col-md-6">
-
-                  <label for="sex" class="dot">
-                    <select class="" id="sex" name="sex" required="">
-                      <option value="">Gender</option>
-                      <option value="m">Male</option>
-                      <option value="f">Female</option>
-                      <option value="o">Other</option>
-                    </select>
                   </label>
 
-
-                  <label for="phone" class="dot">Phone</label>
-                  <input type="tel" id="phone" name="phone" value="" required="" pattern="[\+\-0-9 ]{10,14}">
+                  <label for="applied_role_secondary" class="dot">
+                    <select class="" id="applied_role_secondary" name="applied_role_secondary" required>
+                      <option value="">Choose second preference for role</option>
+                      <option value="teaching">Teaching Volunteer</option>
+                      <option value="wingman">Wingman (Youth Mentoring)</option>
+                      <option value="fundraising">Fundraising Volunteer</option>
+                      <option value="hc">Human Capital Volunteer</option>
+                      <option value="campaigns">Campaigns Volunteer</option>
+                      <option value="finance">Finance Volunteer</option>
+                    </select>
+                  </label>
+                </div>
+                
+                <div class="col-md-6">
+                  <label for="phone" class="dot">Date of Birth</label>
+                  <input type="date" id="dob" name="dob" value="" required="">
 
                   <label for="job_status" class="dot">
-                    <select class="" id="job_status" name="job_status" required="">
-                      <option value="">Occupation</option>
-                      <option value="high school">High School</option>
-                      <option value="college">College</option>
+                    <select class="" id="job_status" name="job_status" required>
+                      <option value="">Choose Job Status</option>
                       <option value="working">Working</option>
-                      <option value="self-employed">Self-Employed</option>
-                      <option value="other">Other</option>
+                      <option value="student">Student</option>
                     </select>
                   </label>
 
+                  <div class="working-section">
+                    <label for="company" class="dot">Organization</label>
+                    <input type="text" id="company" name="company" value="" required="">
+                  </div>
+
+                  <div class="student-section">
+                    <label for="edu_institution" class="dot">Educational Institution</label>
+                    <input type="text" id="edu_institution" name="edu_institution" value="" required="">
+
+                    <label for="edu_course" class="dot">Course</label>
+                    <input type="text" id="edu_course" name="edu_course" value="" required="">
+
+                    <label for="edu_year" class="dot">
+                      <select class="" id="edu_year" name="edu_year" required>
+                        <option value="">Current Year in your Course</option>
+                        <option value="0">Not Applicable</option>
+                        <option value="1">First Year</option>
+                        <option value="2">Second Year</option>
+                        <option value="3">Third Year</option>
+                        <option value="4">Fourth Year</option>
+                        <option value="5">Fifth Year</option>
+                      </select>
+                    </label>
+                  </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                  <label for="volunteering_experience" class="dot">
+                  <select id="volunteering_experience" name="volunteering_experience" required="">
+                    <option value="">Any previous volunteering experience?</option>
+                    <option value="yes">I have voluteered before</option>
+                    <option value="no">This is the first time I have volunteered</option>
+                  </select>
+
+                  <textarea id="volunteering_experience_details" name="volunteering_experience_details" rows="5" cols="40" placeholder="Give us some details about your previous experience"></textarea>
+
                   <label for="why_mad" class="dot">Why MAD?</label>
-                  <textarea class="form-control" id="why_mad" name="why_mad" rows="5" cols="40" required=""></textarea>
+                  <textarea id="why_mad" name="why_mad" rows="5" cols="40" required=""></textarea>
                 </div>
               </div>
 
