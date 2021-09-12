@@ -1,6 +1,12 @@
 #volunteering_experience_details, .student-section, .working-section {
   display: none;
 }
+#form-area .checkbox-section input, #form-area .checkbox-section label {
+  display: inline;
+  width: 1em;
+  margin: .5em 0;
+  font-size: 1rem;
+}
 
 /* -------------------------------- PANEL About----------------------------- */
 .panel-join {
@@ -141,3 +147,4 @@
   padding: 10rem var(--spacing-1);
   text-align: center;
 }
+/*# sourceMappingURL=join.css.map */
