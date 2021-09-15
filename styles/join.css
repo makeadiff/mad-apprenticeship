@@ -7,6 +7,9 @@
   margin: .5em 0;
   font-size: 1rem;
 }
+.underline {
+  text-decoration: underline;
+}
 
 /* -------------------------------- PANEL About----------------------------- */
 .panel-join {

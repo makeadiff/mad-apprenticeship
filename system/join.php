@@ -22,8 +22,7 @@ if(!empty($data['why_mad_other'])) {
 	$data['why_mad'] = "Other: " . $data['why_mad_other']; 
 }
 
-var_dump($data);
-exit;
+// var_dump($data);exit;
 
 $client = new Client(['http_errors' => false]); //GuzzleHttp\Client
 $response = '';
@@ -35,7 +34,8 @@ try {
 			"email" 	=> $data['email'],
 			"phone" 	=> $data['phone'],
 			"city_id" 	=> $data['city_id'],
-			"source" 	=> $data['source'],
+			"dob" 	=> $data['dob'],
+			"source" 	=> isset($data['source']) ? $data['source'] : '',
 			"applied_role" 	=> isset($data['applied_role']) ? $data['applied_role'] : '',
 			"applied_role_secondary" 	=> isset($data['applied_role_secondary']) ? $data['applied_role_secondary'] : '',
 			"company" 	=> isset($data['company']) ? $data['company'] : '',
