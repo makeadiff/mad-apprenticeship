@@ -36,6 +36,7 @@ export const common = {
     if(campaign_id) {
       const anchors = document.getElementsByTagName("a");
       for(let i=0; i<anchors.length; i++) {
+        if(anchors[i].classList.contains('external')) continue; // Skip external links
         anchors[i].href = anchors[i].href + "?c="+campaign_id;
       }
 
