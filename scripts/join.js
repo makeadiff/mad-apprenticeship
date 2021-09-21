@@ -60,7 +60,7 @@ function handleResponse(ret) {
     message += "</ul>";
     document.querySelector("#result").innerHTML = message;
   } else if (ret.status == "success") {
-    document.querySelector("#result").innerHTML = "<h3>You have been added to our database!</h3><p>You are one step closer to becoming a MADster! </p><p>The journey starts here. Your next step is to participate in a 4 day MAD trivia to get to know MAD better. This will hit your inbox starting tomorrow. Watch out and participate! All the best. </p><p>We look forward to having you as a part of our family.</p>";
+    document.querySelector("#result").innerHTML = "<h3>You have been added to our database!</h3><p>You are one step closer to becoming a MADster!</p><p>We will reach out to you when we kickstart the volunteer recruitment process.</p>";
     document.querySelector("#sticky-apply-now").style.display = 'none';
   }
   document.querySelector("#result").scrollIntoView();
@@ -98,6 +98,9 @@ function setJobStatus(e) {
   } else if(status == "student") {
     document.querySelector(".student-section").style.display = 'block';
     document.querySelector(".working-section").style.display = 'none';
+  } else if(status == "other") {
+    document.querySelector(".student-section").style.display = 'none';
+    document.querySelector(".working-section").style.display = 'none';
   }
 } 
 
@@ -116,6 +119,8 @@ function setAvailableProgramsInCity(e) {
   programs += programs_in_city[city_id].map(program => "<option value='" + program + "'>" + program + "</option>").join("");
 
   document.querySelector("#applied_role").innerHTML = programs;
+
+  programs = programs.replace("Choose first preference for role", "Choose second preference for role");
   document.querySelector("#applied_role_secondary").innerHTML = programs;
 }
 
