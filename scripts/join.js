@@ -60,7 +60,7 @@ function logFormContent() {
   });
   // console.error(formDataJson)
   // Log the error
-  fetch("system/log.php", {
+  fetch("https://makeadiff.in/apprenticeship/system/log.php", {
     method: "POST",
     credentials: 'same-origin',
     headers: {
@@ -122,7 +122,7 @@ function submitForm(e) {
     .then(response => response.json())
     .then(data => handleResponse(data));
 
-  timeout = setTimeout(() => responseTimeout(), 5000); // 10 Second Timeout
+  timeout = setTimeout(() => responseTimeout(), 10000); // 10 Second Timeout
 };
 
 function setJobStatus(e) {

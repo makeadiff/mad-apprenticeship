@@ -15,7 +15,7 @@ if(empty($data['name'])) {
 $client = new Client(['http_errors' => false]); //GuzzleHttp\Client
 $response = '';
 try {
-    $result = $client->request('post', 'http://localhost/MAD/api/v1/logs', [ // https://makeadiff.in/api/graphql
+    $result = $client->request('post', 'https://makeadiff.in/api/v1/logs', [ // https://makeadiff.in/api/graphql
     // $result = $client->request('post', 'http://localhost/MAD/apprenticeship/system/test.php', [
        	// 'body' => $graphql,
        	'form_params' => [
