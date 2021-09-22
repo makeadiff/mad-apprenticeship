@@ -2,6 +2,8 @@
 
 import { common } from './common.js';
 
+var timeout = null;
+
 const BANGALORE_CITY_ID = 1;
 const MANGALORE_CITY_ID = 2;
 const TRIVANDRUM_CITY_ID = 3;
@@ -41,17 +43,48 @@ programs_in_city[GWALIOR_CITY_ID] = ['Academic Support Volunteer(5th-10th)', 'Fu
 programs_in_city[HYDERABAD_CITY_ID] = ['Academic Support Volunteer(5th-10th)', 'Academic Support Volunteer(11th-12th)', 'Wingman(11th,12th)', 'Wingman(Undergrads and Graduates)', 'Fundraising Volunteer', 'Finance Volunteer', 'Human Capital Volunteer', 'Campaigns Volunteer'];
 programs_in_city[LUCKNOW_CITY_ID] = [ 'Academic Support Volunteer(5th-10th)', 'Academic Support Volunteer(11th-12th)', 'Wingman(11th,12th)', 'Wingman(Undergrads and Graduates)', 'Fundraising Volunteer', 'Finance Volunteer', 'Human Capital Volunteer', 'Campaigns Volunteer'];
 programs_in_city[MANGALORE_CITY_ID] = [ 'Academic Support Volunteer(5th-10th)', 'Academic Support Volunteer(11th-12th)', 'Wingman(11th,12th)', 'Wingman(Undergrads and Graduates)', 'Fundraising Volunteer', 'Finance Volunteer', 'Human Capital Volunteer', 'Campaigns Volunteer'];
-programs_in_city[MYSORE_CITY_ID] = ['Foundation Skill Volunteer(5th-7th)', 'Academic Support Volunteer(5th-10th)', 'Fundraising Volunteer', 'Finance Volunteer', 'Human Capital Volunteer', 'Campaigns Volunteer'];
+programs_in_city[MYSORE_CITY_ID] = ['Foundation Skill Volunteer(5th-7th)', 'Academic Support Volunteer(5th-10th)', 'Academic Support Volunteer(11th-12th)', 'Wingman(11th,12th)', 'Fundraising Volunteer', 'Finance Volunteer', 'Human Capital Volunteer', 'Campaigns Volunteer'];
 programs_in_city[NAGPUR_CITY_ID] = ['Academic Support Volunteer(5th-10th)', 'Academic Support Volunteer(11th-12th)', 'Wingman(11th,12th)', 'Wingman(Undergrads and Graduates)', 'Fundraising Volunteer', 'Finance Volunteer', 'Human Capital Volunteer', 'Campaigns Volunteer'];
-programs_in_city[PUNE_CITY_ID] = ['Academic Support Volunteer(5th-10th)', 'Academic Support Volunteer(11th-12th)', 'Wingman(11th,12th)', 'Fundraising Volunteer', 'Finance Volunteer', 'Human Capital Volunteer', 'Campaigns Volunteer'];
+programs_in_city[PUNE_CITY_ID] = ['Academic Support Volunteer(5th-10th)', 'Academic Support Volunteer(11th-12th)', 'Wingman(11th,12th)', 'Wingman(Undergrads and Graduates)', 'Fundraising Volunteer', 'Finance Volunteer', 'Human Capital Volunteer', 'Campaigns Volunteer'];
 programs_in_city[TRIVANDRUM_CITY_ID] = ['Academic Support Volunteer(5th-10th)', 'Academic Support Volunteer(11th-12th)', 'Wingman(11th,12th)', 'Wingman(Undergrads and Graduates)', 'Fundraising Volunteer', 'Finance Volunteer', 'Human Capital Volunteer', 'Campaigns Volunteer'];
 programs_in_city[VELLORE_CITY_ID] = ['Academic Support Volunteer(5th-10th)', 'Academic Support Volunteer(11th-12th)', 'Wingman(11th,12th)', 'Wingman(Undergrads and Graduates)', 'Fundraising Volunteer', 'Finance Volunteer', 'Human Capital Volunteer', 'Campaigns Volunteer'];
 programs_in_city[VIJAYAWADA_CITY_ID] = ['Academic Support Volunteer(5th-10th)', 'Academic Support Volunteer(11th-12th)', 'Wingman(11th,12th)', 'Wingman(Undergrads and Graduates)', 'Fundraising Volunteer', 'Finance Volunteer', 'Human Capital Volunteer', 'Campaigns Volunteer'];
 programs_in_city[VIZAG_CITY_ID] = ['Academic Support Volunteer(5th-10th)', 'Fundraising Volunteer', 'Finance Volunteer', 'Human Capital Volunteer', 'Campaigns Volunteer'];
 
+function logFormContent() {
+  const formData = new FormData(document.getElementById("form"));
+  const formDataJson = JSON.stringify({
+    name: "registeration_error",
+    log: JSON.stringify(Object.fromEntries(formData)),
+    level: "error",
+  });
+  // console.error(formDataJson)
+  // Log the error
+  fetch("system/log.php", {
+    method: "POST",
+    credentials: 'same-origin',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: formDataJson
+  });
+}
+
+function responseTimeout() {
+  document.querySelector("#loading").style.display = 'none';
+  document.querySelector("#form").style.display = 'none';
+  var message = "<h3>Some issues were encountered when trying to add you to our database.</h3><h4>Please Refresh the page and try again.</h4>";
+  document.querySelector("#result").innerHTML = message;
+  document.querySelector("#result").scrollIntoView();
+
+  logFormContent();
+}
+
 function handleResponse(ret) {
+  clearTimeout(timeout);
   document.querySelector("#loading").style.display = 'none';
   if (ret.status === "fail") {
+    logFormContent();
     document.querySelector("#form").style.display = 'block';
     var message = "<h3>Some issues were encountered when trying to add you to our database...</h3><ul>";
     for (var i in ret.data) {
@@ -88,6 +121,8 @@ function submitForm(e) {
   })
     .then(response => response.json())
     .then(data => handleResponse(data));
+
+  timeout = setTimeout(() => responseTimeout(), 5000); // 10 Second Timeout
 };
 
 function setJobStatus(e) {
