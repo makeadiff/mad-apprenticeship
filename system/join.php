@@ -34,7 +34,7 @@ try {
 			"email" 	=> $data['email'],
 			"phone" 	=> $data['phone'],
 			"city_id" 	=> $data['city_id'],
-			"dob" 	=> $data['dob'],
+			"birthday" 	=> $data['dob'],
 			"source" 	=> isset($data['source']) ? $data['source'] : '',
 			"applied_role" 	=> isset($data['applied_role']) ? $data['applied_role'] : '',
 			"applied_role_secondary" 	=> isset($data['applied_role_secondary']) ? $data['applied_role_secondary'] : '',
