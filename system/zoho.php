@@ -1,7 +1,8 @@
 <?php
-// require '../../../commons/common.php';
 require 'vendor/autoload.php';
-use GuzzleHttp\Client;
+require __DIR__ . '/../../apps/commons/includes/classes/ZohoClient.php';
+
+header("Content-Type: application/json");
 
 $data = $_REQUEST;
 if(empty($data['campaign'])) {
@@ -14,27 +15,27 @@ if(!isset($data["campaign"])) die("{'status': 'error', 'message' : 'Campaign not
 
 $campaign = $data["campaign"];
 
-$client = new Client(['http_errors' => false]); //GuzzleHttp\Client
-$response = '';
 try {
-    $result = $client->post('https://creator.zoho.com/api/jithincn1/json/mad-recruit/form/Campaign_Track_Record/record/add', [
-        'form_params' => [
-			"authtoken" 	    => "cdcfd4eb1b77b0835f4339827906e42a",
-			"scope" 		    => "creatorapi",
-            'Vistor_IPAddress'  => $_SERVER['REMOTE_ADDR'],
-			"Campaign_ID"	    => $campaign
-        ]
+    $oauth_secret = json_decode(file_get_contents(realpath(__DIR__ . '/../../apps/worker/system/zoho_oauth_secret.json')));
+    $zoho_client = new ZohoClient($oauth_secret->client_id, $oauth_secret->client_secret, 'https://makeadiff.in/apps/worker/zoho_oauth_callback.php',
+        ['access_token_file' => realpath(__DIR__ . '/../../apps/worker/system/access_token.dat')]);
+} catch(Exception $e) {
+    die("Error : " . $e);
+}
+
+try {
+    $result = $zoho_client->request('POST', 'https://creator.zoho.com/api/v2/jithincn1/mad-recruit/form/Campaign_Track_Record', [
+        'Vistor_IPAddress'  => $_SERVER['REMOTE_ADDR'],
+        "Campaign_ID"       => $campaign
     ]);
-    $response = $result->getBody();
+    if (stripos($result['message'], 'success') !== false) { // Yes, a wierd way to check a for sucess, but future compatiblity
+        echo json_encode(['status' => 'success', 'message' => "Data pushed to Zoho"]);
+    } else {
+        echo json_encode(['status' => 'error', 'message' => "Failure encountered in pushing data to Zoho"]);
+    }
+    // var_dump($result);
+
 } catch (Exception $e) {
     // Can't send data to Zoho
-} finally {
-    if (stripos($response, 'success') !== false) { // Yes, a wierd way to check a json for sucess, but it is a wierd json string.
-    	echo json_encode(['status' => 'success', 'message' => "Data pushed to Zoho"]);
-	} else {
-        echo json_encode(['status' => 'error', 'message' => "Failure encountered in Data pushed to Zoho"]);
-        $fp = fopen('error.log', 'a');//opens file in append mode  
-        fwrite($fp, $response);
-        fclose($fp);  
-    }
+    echo json_encode(['status' => 'error', 'message' => "Failure encountered in pushing data to Zoho($e)"]);
 }
