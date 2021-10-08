@@ -51,16 +51,19 @@ programs_in_city[VELLORE_CITY_ID] = ['Academic Support Volunteer(5th-10th)', 'Ac
 programs_in_city[VIJAYAWADA_CITY_ID] = ['Academic Support Volunteer(5th-10th)', 'Academic Support Volunteer(11th-12th)', 'Wingman(11th,12th)', 'Wingman(Undergrads and Graduates)', 'Fundraising Volunteer', 'Finance Volunteer', 'Human Capital Volunteer', 'Campaigns Volunteer'];
 programs_in_city[VIZAG_CITY_ID] = ['Academic Support Volunteer(5th-10th)', 'Fundraising Volunteer', 'Campaigns Volunteer'];
 
-function logFormContent() {
+function logFormContent(error) {
   const formData = new FormData(document.getElementById("form"));
+  let log_info = Object.fromEntries(formData);
+  log_info.error = error;
   const formDataJson = JSON.stringify({
     name: "registeration_error",
-    log: JSON.stringify(Object.fromEntries(formData)),
+    log: JSON.stringify(log_info),
     level: "error",
   });
   // console.error(formDataJson)
   // Log the error
-  fetch("https://makeadiff.in/apprenticeship/system/log.php", {
+  
+  fetch("system/log.php", {
     method: "POST",
     credentials: 'same-origin',
     headers: {
@@ -70,14 +73,15 @@ function logFormContent() {
   });
 }
 
-function responseTimeout() {
+function handleError(error) {
+  clearTimeout(timeout);
   document.querySelector("#loading").style.display = 'none';
   document.querySelector("#form").style.display = 'none';
   var message = "<h3>Some issues were encountered when trying to add you to our database.</h3><h4>Please Refresh the page and try again.</h4>";
   document.querySelector("#result").innerHTML = message;
   document.querySelector("#result").scrollIntoView();
 
-  logFormContent();
+  logFormContent(error);
 }
 
 function handleResponse(ret) {
@@ -94,7 +98,7 @@ function handleResponse(ret) {
     document.querySelector("#result").innerHTML = message;
   } else if (ret.status == "success") {
     document.querySelector("#result").innerHTML = "<h3>You have been added to our database!</h3><p>You are one step closer to becoming a MADster!</p><p>We will reach out to you when we kickstart the volunteer recruitment process.</p>";
-    document.querySelector("#sticky-apply-now").style.display = 'none';
+    document.querySelector("#sticky-submit-button").style.display = 'none';
   }
   document.querySelector("#result").scrollIntoView();
 }
@@ -107,11 +111,11 @@ function submitForm(e) {
   const formData = new FormData(e.target);
   const formDataJson = JSON.stringify(Object.fromEntries(formData));
 
-  // const API = 'https://mad2020.free.beeceptor.com/success'; // success case
-  // const API = 'https://mad2020.free.beeceptor.com/fail'; // fail case
-  const API =  e.target.action; // production
+  // const api_endpoint_url = 'https://mad2020.free.beeceptor.com/success'; // success case
+  // const api_endpoint_url = 'https://mad2020.free.beeceptor.com/fail'; // fail case
+  const api_endpoint_url =  e.target.action; // production
 
-  fetch(API, {
+  fetch(api_endpoint_url, {
     method: 'POST',
     credentials: 'same-origin',
     headers: {
@@ -120,9 +124,10 @@ function submitForm(e) {
     body: formDataJson
   })
     .then(response => response.json())
-    .then(data => handleResponse(data));
+    .then(data => handleResponse(data))
+    .catch(error => handleError(error));
 
-  timeout = setTimeout(() => responseTimeout(), 10000); // 10 Second Timeout
+  timeout = setTimeout(() => handleError("Timed out"), 10000); // 10 Second Timeout
 };
 
 function setJobStatus(e) {

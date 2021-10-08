@@ -26,6 +26,7 @@ if(!empty($data['why_mad_other'])) {
 
 $client = new Client(['http_errors' => false]); //GuzzleHttp\Client
 $response = '';
+$log = false;
 try {
     $result = $client->post('https://makeadiff.in/api/v1/users', [
         'form_params' => [
@@ -54,11 +55,20 @@ try {
     ]);
     $response = $result->getBody();
 } catch (Exception $e) {
-    // Can't send data to Zoho
-    echo $response;
-} finally {
-    if ($response) {
+    // echo $response;
 
+    $log = ['response' => $response, 'error' => $e->getMessage(), 'time' => date('Y-m-d H:i:s'), 'data' => $data, 'server' => $_SERVER];
+    file_put_contents(__DIR__ . '/error.log', json_encode($log) . "\n", FILE_APPEND);
+    // var_dump($log);
+} finally {
+    if ($response and $result->getStatusCode() == 200) {
     	echo $response; //json_encode(['status' => 'success', 'message' => "Volunteer Added"]);
+	} else {
+		echo json_encode(['status' => 'error', 'message' => 'Error adding your data - please try again.']);
+		if(!$log) {
+			$log = ['response' => $response, 'error' => "Status: " . $result->getStatusCode(), 'time' => date('Y-m-d H:i:s'), 'data' => $data, 'server' => $_SERVER];
+    		file_put_contents(__DIR__ . '/error.log', json_encode($log) . "\n", FILE_APPEND);
+    		// var_dump($log);
+		}
 	}
 }
