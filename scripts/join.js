@@ -96,6 +96,14 @@ function handleResponse(ret) {
     }
     message += "</ul>";
     document.querySelector("#result").innerHTML = message;
+    document.querySelector("#result").style.color = "red";
+  } else if(ret.status === "error") {
+    logFormContent();
+    document.querySelector("#form").style.display = 'block';
+    var message = "<h3>Some issues were encountered when trying to add you to our database...</h3>" + ret.message; 
+    document.querySelector("#result").innerHTML = message;
+    document.querySelector("#result").style.color = "red";
+
   } else if (ret.status == "success") {
     document.querySelector("#result").innerHTML = "<h3>You have been added to our database!</h3><p>You are one step closer to becoming a MADster!</p><p>We will reach out to you when we kickstart the volunteer recruitment process.</p>";
     document.querySelector("#sticky-submit-button").style.display = 'none';
