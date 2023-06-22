@@ -26,25 +26,21 @@ export const common = {
       }
     })
 
-    // IF there is a campain id, recreate all links with that ID
-    let campaign_id = "";
+    // Copy over these parameters...
+    let redirect = "";
+
     let loc = document.location.href;
 
-    if(loc.match(/\?c=/)) {
-      campaign_id = loc.replace(/.+\?c=([a-zA-Z0-9]+).*$/, "$1");
+    if(loc.match(/redirectTo=/)) {
+      redirect = loc.replace(/.+redirectTo=(.+)$/, "$1");
     }
-    if(campaign_id) {
+    if(redirect) {
       const anchors = document.getElementsByTagName("a");
       for(let i=0; i<anchors.length; i++) {
         if(anchors[i].classList.contains('external')) continue; // Skip external links
-        anchors[i].href = anchors[i].href + "?c="+campaign_id;
+        anchors[i].href = redirect;
       }
 
-      fetch("system/zoho.php", {
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({"campaign": campaign_id}),
-        method: "POST"
-      }).then(response => response.json()).then(data => console.log(data));
     }
 
   },
