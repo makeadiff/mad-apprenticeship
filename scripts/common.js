@@ -29,11 +29,19 @@ export const common = {
     // Copy over these parameters...
     let redirect = "";
 
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    const params = Object.fromEntries(urlSearchParams.entries());
+
     let loc = document.location.href;
 
-    if(loc.match(/redirectTo=/)) {
-      redirect = loc.replace(/.+redirectTo=(.+)$/, "$1");
+    if(params.redirectTo) {
+      redirect = params.redirectTo;
+
+      if(redirect.includes('%2F'))  {
+        redirect = decodeURI(redirect)
+      }
     }
+
     if(redirect) {
       const anchors = document.getElementsByTagName("a");
       for(let i=0; i<anchors.length; i++) {
