@@ -39,6 +39,7 @@ export const common = {
 
       if(redirect.includes('%2F'))  {
         redirect = decodeURI(redirect)
+        console.log(redirect)
       }
     }
 
