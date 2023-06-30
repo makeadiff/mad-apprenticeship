@@ -37,7 +37,12 @@ export const common = {
     if(params.redirectTo) {
       redirect = params.redirectTo;
 
-      redirect = decodeURI(redirect)
+      redirect = decodeURI(redirect);
+      Object.keys(params)?.forEach(key => {
+      if (!key?.includes('redirectTo')) {
+        redirect = redirect + '&' + key + '=' + params[key]
+      }
+    })
     }
 
     if(redirect) {
