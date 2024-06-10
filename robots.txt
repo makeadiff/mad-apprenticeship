@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: https://makeadiff.in/sitemap.xml
+Sitemap: http://makeadiff.in/sitemap.xml

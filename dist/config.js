@@ -23,20 +23,25 @@ const customInit = function () {
 
     redirect = decodeURI(redirect);
     Object.keys(params)?.forEach(key => {
-    if (!key?.includes('redirectTo')) {
-      redirect = redirect + '&' + key + '=' + params[key]
-    }
-  })
+      if (!key?.includes('redirectTo')) {
+        redirect = redirect + '&' + key + '=' + params[key]
+      }
+    })
   }
 
   if(redirect) {
     const anchors = document.getElementsByTagName("a");
+    console.log(anchors.length)
     for(let i=0; i<anchors.length; i++) {
-      if(anchors[i].classList.contains('external')) continue; // Skip external links
+      // if(anchors[i].classList.contains('external-link')) continue; // Skip external links
       anchors[i].href = redirect;
     }
 
   }
 }
 
-window.addEventListener("load", customInit, false); 
+window.addEventListener("load", function() {
+  setTimeout(() => {
+    customInit();
+  }, 500);
+}, false); 
