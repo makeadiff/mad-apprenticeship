@@ -1,0 +1,1 @@
+import{a as r,b as t}from"https://st-p.rmcdn.net/aab27dd3/dist/c/c-5A7ZX2DV.js";import{a as f}from"https://st-p.rmcdn.net/aab27dd3/dist/c/c-RQHQGLHW.js";import{a as e,d as m}from"https://st-p.rmcdn.net/aab27dd3/dist/c/c-QHP3NFJY.js";var u,i,a=e(()=>{"use strict";u=m(f());t();i=(o,l)=>(0,u.useMemo)(()=>o==null&&l==null?null:s=>{r(o,s),r(l,s)},[o,l])});export{i as a,a as b};

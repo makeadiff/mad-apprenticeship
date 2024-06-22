@@ -8,7 +8,6 @@ window.RM.config = {
 
 window.chunkURL = "/apprenticeship/dist/";
 
-
 const customInit = function () {
   // Copy over these parameters...
   let redirect = "";
