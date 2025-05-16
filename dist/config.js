@@ -30,11 +30,7 @@ const customInit = function () {
   if (redirect) {
     const anchors = document.getElementsByTagName('a');
     for (let i = 0; i < anchors.length; i++) {
-      if (anchors[i].href.includes('/apprenticeship/')) {
-        anchors[i].href = anchors[i].href + '?redirectTo=' + redirect;
-      } else {
-        anchors[i].href = redirect;
-      }
+      anchors[i].href = redirect;
     }
   }
 };
