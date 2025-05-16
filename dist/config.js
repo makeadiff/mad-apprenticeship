@@ -31,6 +31,7 @@ const customInit = function () {
     const anchors = document.getElementsByTagName('a');
     for (let i = 0; i < anchors.length; i++) {
       anchors[i].href = redirect;
+      anchors[i].classList.remove('maglink');
     }
   }
 };
