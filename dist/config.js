@@ -7,33 +7,29 @@ window.RM.config = {
 
 window.chunkURL = '/apprenticeship/dist/';
 
-const customInit = function () {
-  // Copy over these parameters...
-  let redirect = '';
-
+// Update all the Apply Now links to the URL specified in the query parameter `redirectTo`
+const updateLinks = function () {
   const urlSearchParams = new URLSearchParams(window.location.search);
   const params = Object.fromEntries(urlSearchParams.entries());
 
-  let loc = document.location.href;
-
   if (params.redirectTo) {
-    redirect = params.redirectTo;
-
-    redirect = decodeURI(redirect);
-    Object.keys(params)?.forEach((key) => {
-      if (!key?.includes('redirectTo')) {
-        redirect = redirect + '&' + key + '=' + params[key];
-      }
+    document.querySelectorAll('a.external-link').forEach((link) => {
+      link.href = params.redirectTo;
     });
   }
+};
 
-  if (redirect) {
-    const anchors = document.getElementsByTagName('a');
-    for (let i = 0; i < anchors.length; i++) {
-      anchors[i].href = redirect;
-      anchors[i].classList.remove('maglink');
-    }
-  }
+const customInit = function () {
+  updateLinks();
+
+  // Add event listeners to all links with class 'maglink'(header links) to update links after navigation
+  document.querySelectorAll('a.maglink').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      setTimeout(() => {
+        updateLinks();
+      }, 200);
+    });
+  });
 };
 
 window.addEventListener(
